@@ -1,0 +1,51 @@
+# Append to ~/.kimi-code/config.toml; replace the executable path.
+
+[[hooks]]
+event = "UserPromptSubmit"
+command = "/absolute/path/to/ulanzi/.venv/bin/kimi-deck hook"
+timeout = 2
+
+[[hooks]]
+event = "TurnStarted"
+command = "/absolute/path/to/ulanzi/.venv/bin/kimi-deck hook"
+timeout = 2
+
+[[hooks]]
+event = "PermissionRequest"
+command = "/absolute/path/to/ulanzi/.venv/bin/kimi-deck hook"
+timeout = 2
+
+[[hooks]]
+event = "PermissionResult"
+command = "/absolute/path/to/ulanzi/.venv/bin/kimi-deck hook"
+timeout = 2
+
+[[hooks]]
+event = "PostToolUse"
+command = "/absolute/path/to/ulanzi/.venv/bin/kimi-deck hook"
+timeout = 2
+
+[[hooks]]
+event = "PostToolUseFailure"
+command = "/absolute/path/to/ulanzi/.venv/bin/kimi-deck hook"
+timeout = 2
+
+[[hooks]]
+event = "Stop"
+command = "/absolute/path/to/ulanzi/.venv/bin/kimi-deck hook"
+timeout = 2
+
+[[hooks]]
+event = "StopFailure"
+command = "/absolute/path/to/ulanzi/.venv/bin/kimi-deck hook"
+timeout = 2
+
+[[hooks]]
+event = "Interrupt"
+command = "/absolute/path/to/ulanzi/.venv/bin/kimi-deck hook"
+timeout = 2
+
+[[hooks]]
+event = "SessionEnd"
+command = "/absolute/path/to/ulanzi/.venv/bin/kimi-deck hook"
+timeout = 2

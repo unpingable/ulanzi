@@ -1,0 +1,12 @@
+include LICENSE NOTICE THIRD_PARTY_LICENSES.txt PROVENANCE.md
+include CONTRIBUTING.md SECURITY.md
+recursive-include docs *.md
+recursive-include examples *.json *.toml
+recursive-include systemd *.in
+recursive-include udev *.rules
+include requirements-reference.txt
+recursive-include qualify *.py
+recursive-include experiments *.py *.md
+recursive-include tests *.py *.json *.md
+prune _drafts
+global-exclude *.py[cod] *.json.tmp

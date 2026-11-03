@@ -1,0 +1,41 @@
+{
+  "ulanzi-attention": {
+    "PreInvocation": [
+      {
+        "type": "command",
+        "command": "/absolute/path/to/ulanzi/.venv/bin/agy-deck hook PreInvocation",
+        "timeout": 2
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/absolute/path/to/ulanzi/.venv/bin/agy-deck hook PostToolUse",
+            "timeout": 2
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "ask_question",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/absolute/path/to/ulanzi/.venv/bin/agy-deck hook PreToolUse",
+            "timeout": 2
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "type": "command",
+        "command": "/absolute/path/to/ulanzi/.venv/bin/agy-deck hook Stop",
+        "timeout": 2
+      }
+    ]
+  }
+}

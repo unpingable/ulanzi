@@ -1,0 +1,2 @@
+# Ulanzi Stream Controller D200: let plugdev use the hidraw nodes.
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="2207", ATTRS{idProduct}=="0019", MODE="0660", GROUP="plugdev"

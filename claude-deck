@@ -1,0 +1,6 @@
+#!/usr/bin/env python3
+"""claude lifecycle attention; hook, ack, show, sync. No approval output."""
+from ulanzi.agent_deck import run
+
+if __name__ == '__main__':
+    raise SystemExit(run('claude'))

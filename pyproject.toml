@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=77.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ulanzi"
+version = "0.1.0"
+description = "Headless Linux daemon for the Ulanzi D200: keys run shell commands, labels are set over a socket"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE", "THIRD_PARTY_LICENSES.txt"]
+authors = [{ name = "James Beck" }]
+dependencies = [
+    "hidapi>=0.14",
+    "pillow>=10.1",
+]
+
+[project.urls]
+Repository = "https://github.com/unpingable/ulanzi"
+Issues = "https://github.com/unpingable/ulanzi/issues"
+Documentation = "https://github.com/unpingable/ulanzi#readme"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+
+[project.scripts]
+ulanzid = "ulanzi.daemon:main"
+
+[tool.setuptools]
+packages = ["ulanzi"]
+script-files = ["ulanzictl", "claude-deck", "codex-deck", "kimi-deck", "agy-deck"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.setuptools.data-files]
+"share/ulanzi" = ["buttons.toml"]
+"share/ulanzi/systemd" = ["systemd/ulanzid.service.in"]
+"share/ulanzi/udev" = ["udev/70-ulanzi-d200.rules"]
+"share/ulanzi/examples" = ["examples/claude-hooks.json", "examples/codex-hooks.json", "examples/kimi-hooks.toml", "examples/agy-hooks.json"]

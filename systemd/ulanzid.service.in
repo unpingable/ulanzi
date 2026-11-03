@@ -1,0 +1,17 @@
+# Install: sed "s|@REPO@|$PWD|g" systemd/ulanzid.service.in > ~/.config/systemd/user/ulanzid.service
+[Unit]
+Description=Ulanzi D200 key daemon
+
+[Service]
+ExecStart="@REPO@/.venv/bin/ulanzid"
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=3
+# Key commands inherit this environment (the daemon adds itself to PATH for ulanzictl).
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+# If key commands need SSH, configure SSH_AUTH_SOCK for your actual agent in a
+# user-service override. There is no portable systemd ssh-agent socket path.
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target

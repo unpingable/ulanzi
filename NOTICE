@@ -1,0 +1,11 @@
+ulanzi
+Copyright 2026 James Beck
+
+This product includes software developed at
+https://github.com/unpingable/ulanzi
+
+Licensed under the Apache License, Version 2.0.
+
+Protocol framing and firmware workarounds are based on the MIT-licensed
+redphx/strmdck and marcelobrake/ulanzi-linux projects. Their copyright and
+permission notices are reproduced in THIRD_PARTY_LICENSES.txt.

@@ -1,0 +1,4 @@
+# Optional reference-only framing check, excluded from published metadata.
+strmdck @ git+https://github.com/redphx/strmdck@7e29ab32d1692faed445024eda0a0cdd5c576710
+deepdiff>=8
+python-dotenv>=1

@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+.pytest_cache/
+.venv/
+venv/
+
+# Node
+node_modules/
+
+# Data / runtime
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+.env
+.env.*
+!.env.example
+*.sock
+*.pem
+*.key
+id_rsa
+id_ed25519
+.lanes/
+.worktrees/
+
+# Raw hardware captures contain device identities and local machine details.
+docs/qualification/*.json
+docs/qualification/*.json.tmp
+qualification-output/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude Code
+.claude/projects/
+
+# Governor (local state)
+.governor/
+
+# Continuity (local MCP config + project-local DB)
+.mcp.json
+.continuity/

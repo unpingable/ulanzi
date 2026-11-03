@@ -1,0 +1,71 @@
+{
+  "description": "D200 attention; replace the absolute executable path. Set ULANZI_CODEX_DEVICE consistently in hooks and ack for multiple devices.",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/absolute/path/to/ulanzi/.venv/bin/codex-deck hook",
+            "timeout": 2
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/absolute/path/to/ulanzi/.venv/bin/codex-deck hook",
+            "timeout": 2
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/absolute/path/to/ulanzi/.venv/bin/codex-deck hook",
+            "timeout": 2
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/absolute/path/to/ulanzi/.venv/bin/codex-deck hook",
+            "timeout": 2
+          }
+        ]
+      }
+    ],
+    "Interrupt": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/absolute/path/to/ulanzi/.venv/bin/codex-deck hook",
+            "timeout": 2
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/absolute/path/to/ulanzi/.venv/bin/codex-deck hook",
+            "timeout": 2
+          }
+        ]
+      }
+    ]
+  }
+}

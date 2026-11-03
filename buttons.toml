@@ -1,0 +1,70 @@
+# Keys are numbered like people count them: 1-5 top row, 6-10 middle, 11-13 bottom.
+# The small clock window is a touch area called "window". It takes run, not label.
+#
+# A key shows a `label` or a live `widget` (load, cpu, mem, net, disk,
+# weather_* variants, or agent_claude/agent_codex/agent_kimi/agent_agy), and may also
+# have a `run` command. Commands start on press with ULANZI_KEY set to the key's
+# name; output goes to the journal; a key whose command is still running ignores
+# further presses. `ulanzictl label <key> <text>` overrides what a key shows until
+# `ulanzictl reset <key>`.
+
+[deck]
+brightness = 60
+# Seconds of host silence before the daemon sends a keep-alive (0.5..3). The
+# conservative limit is based on reports of a ~5 s firmware watchdog.
+heartbeat = 2.0
+# Seconds between metric samples and widget redraws.
+refresh = 2.0
+# Seconds between small-window clock updates; 0 leaves the clock to the firmware.
+clock = 1.0
+
+[keys.1]
+widget = "load"
+run = "uptime"
+
+[keys.2]
+widget = "cpu"
+
+[keys.3]
+widget = "mem"
+
+[keys.4]
+widget = "net"
+
+[keys.5]
+widget = "disk"
+
+# Same measurements, with a visual projection directly beneath each graph.
+[keys.6]
+widget = "weather_load"
+
+[keys.7]
+widget = "weather_cpu"
+
+[keys.8]
+widget = "weather_mem"
+
+[keys.9]
+widget = "weather_net"
+
+[keys.10]
+widget = "weather_disk"
+
+# Agent hooks show ACTIVE for ordinary activity and WAIT, DONE, ERROR or STOPPED
+# for attention. Set show_active = false for attention-only keys. Pressing
+# acknowledges completed sessions, never active work; keys never approve anything.
+[keys.11]
+widget = "agent_claude"
+run = "claude-deck ack"
+show_active = true
+
+[keys.12]
+widget = "agent_codex"
+run = "codex-deck ack"
+show_active = true
+
+# Hook setup is optional; QUIET means no known active or pending events.
+[keys.13]
+widget = "agent_kimi"
+run = "kimi-deck ack"
+show_active = true

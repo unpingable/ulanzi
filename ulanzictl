@@ -1,0 +1,45 @@
+#!/usr/bin/env python3
+"""Send one command to ulanzid; exit 0 on ok, 1 on err, 2 if the daemon is unreachable.
+
+  ulanzictl label <key> [text]   override a key's label ("" blanks it)
+  ulanzictl reset <key>|all      drop overrides, back to buttons.toml
+  ulanzictl press <key>          run a key's command as if pressed
+  ulanzictl reload               re-read buttons.toml
+  ulanzictl target <name|identity|all> profile <profile>  switch layout
+  ulanzictl devices              JSON inventory of every device/absent role
+  ulanzictl target <name|identity|all> <command>
+  ulanzictl status               show connection and current labels
+
+<key> is 1..13, left to right and top to bottom; press also takes 'window'.
+"""
+import os
+import socket
+import sys
+
+if len(sys.argv) < 2 or sys.argv[1] in ('-h', '--help'):
+    print(__doc__.strip())
+    sys.exit(0 if len(sys.argv) > 1 else 2)
+
+runtime = os.environ.get('XDG_RUNTIME_DIR') or f'/run/user/{os.getuid()}'
+path = os.environ.get('ULANZI_SOCKET', os.path.join(runtime, 'ulanzi.sock'))
+args = sys.argv[1:]
+if os.environ.get('ULANZI_DEVICE') and args[0] not in ('target', 'devices', 'inventory', 'reload'):
+    args = ['target', os.environ.get('ULANZI_IDENTITY') or os.environ['ULANZI_DEVICE'], *args]
+line = ' '.join(a.replace('\n', ' ') for a in args) + '\n'
+
+try:
+    with socket.socket(socket.AF_UNIX) as s:
+        s.settimeout(5)
+        s.connect(path)
+        s.sendall(line.encode())
+        reply = s.makefile(encoding='utf-8').readline().strip()
+except OSError as e:
+    print(f'ulanzictl: cannot reach ulanzid at {path}: {e}', file=sys.stderr)
+    sys.exit(2)
+
+if reply.startswith('ok'):
+    if reply[2:].strip():
+        print(reply[2:].strip())
+    sys.exit(0)
+print(f'ulanzictl: {reply.removeprefix("err ")}', file=sys.stderr)
+sys.exit(1)
